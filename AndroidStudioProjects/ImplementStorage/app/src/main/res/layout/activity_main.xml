@@ -12,10 +12,10 @@
         android:layout_height="wrap_content"
         android:text="Click"
         android:id="@+id/click"
-        android:onClick="increment"
+        android:onClick="change"
+        android:layout_marginEnd="62dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp" />
+        android:layout_alignParentEnd="true" />
 
     <ListView
         android:id="@android:id/list"
@@ -24,6 +24,16 @@
         android:layout_below="@+id/click"
         android:layout_alignEnd="@+id/click">
     </ListView>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inputText"
+        android:layout_above="@android:id/list"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/click"
+        android:background="#DDDDDD"
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>
 

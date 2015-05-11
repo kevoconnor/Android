@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import java.io.FileInputStream;
@@ -21,11 +22,9 @@ public class MainActivity extends ListActivity {
     private static final String TAG = "ListActivity";
     private ArrayList<String> list_values;
     private ArrayAdapter<String> list_adapter;
-    private static final String FILENAME = "storage3";
+    private static final String FILENAME = "storage5";
     private RelativeLayout rel;
-    private int count = 0;
-    private String value;
-    private int value2 = 0;
+    private String color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +32,26 @@ public class MainActivity extends ListActivity {
         setContentView(R.layout.activity_main);
 
         SharedPreferences preferences = getSharedPreferences("sharedPref", MODE_PRIVATE);
-        value = preferences.getString("value", "none");
+        color = preferences.getString("color", "none");
+        /*if (color2.equals("none")) {
+            color = "black";
+        }else{
+            color = preferences.getString(getString(R.string.color), color2);
+        }*/
+
+        Log.d("Get String", color);
 
         rel = (RelativeLayout) findViewById(R.id.rel);
-        value2 = Integer.valueOf(value);
-        if (value2 % 2 == 0){
-            rel.setBackgroundColor(Color.GRAY);
+        if (color.equals("red")){
+            rel.setBackgroundColor(Color.RED);
+        }else if (color.equals("yellow")){
+            rel.setBackgroundColor(Color.YELLOW);
+        }else if (color.equals("green")){
+            rel.setBackgroundColor(Color.GREEN);
+        }else if (color.equals("blue")){
+            rel.setBackgroundColor(Color.BLUE);
+        }else{
+            rel.setBackgroundColor(Color.BLACK);
         }
 
         list_values = new ArrayList<String>();
@@ -50,23 +63,34 @@ public class MainActivity extends ListActivity {
         setListAdapter(list_adapter);
     }
 
-    public void increment(View v){
-        count++;
-        value = Integer.toString(count);
-        list_values.add(0, value);
+    public void change(View v){
+        EditText evalue = (EditText) findViewById(R.id.inputText);
+        color = evalue.getText().toString();
+
+        Log.d("Button Click", color);
+
+        list_values.add(0, color);
         list_adapter.notifyDataSetChanged();
         rel = (RelativeLayout) findViewById(R.id.rel);
 
         SharedPreferences preferences = getSharedPreferences("sharedPref", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
 
-        if (count % 2 == 0){
-            rel.setBackgroundColor(Color.GRAY);
+        if (color.equals("red")){
+            rel.setBackgroundColor(Color.RED);
+        }else if (color.equals("yellow")){
+            rel.setBackgroundColor(Color.YELLOW);
+        }else if (color.equals("green")){
+            rel.setBackgroundColor(Color.GREEN);
+        }else if (color.equals("blue")){
+            rel.setBackgroundColor(Color.BLUE);
         }else{
             rel.setBackgroundColor(Color.BLACK);
         }
 
-        editor.putString("value", value);
+        Log.d("Put String", color);
+        //color2 = color;
+        editor.putString("color", color);
         editor.commit();
     }
 
@@ -108,5 +132,19 @@ public class MainActivity extends ListActivity {
             }
         }
     }
+
+    /*@Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("count", count);
+        Log.d("Saved", Integer.toString(count));
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        count = savedInstanceState.getInt("count");
+        Log.d("Restored", Integer.toString(count));
+    }*/
 
 }
