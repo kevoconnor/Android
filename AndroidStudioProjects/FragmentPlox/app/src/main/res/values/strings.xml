@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FragmentPlox</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="items">
+        <item>"Code Red"</item>
+        <item>"Baja Blast"</item>
+    </string-array>
+</resources>
