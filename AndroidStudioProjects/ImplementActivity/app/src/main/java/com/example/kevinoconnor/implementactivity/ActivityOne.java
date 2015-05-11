@@ -9,7 +9,6 @@ import android.view.View;
 public class ActivityOne extends Activity {
 
     private static final String TAG = "ActivityOne";
-    public int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,15 +38,7 @@ public class ActivityOne extends Activity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("count", count);
-        count++;
-        Log.d(TAG, "Count is " + count);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        count = savedInstanceState.getInt("count");
+        Log.d(TAG, "onSaveInstanceState called");
     }
 
     public void startActivityTwo(View v){

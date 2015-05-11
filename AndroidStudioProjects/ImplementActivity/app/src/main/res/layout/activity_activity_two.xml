@@ -5,21 +5,47 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    android:paddingBottom="16dp">
+    android:paddingBottom="16dp"
+    android:background="#000000">
+
+    <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="ActivityOne"
+    android:onClick="startActivityOne"
+    android:id="@+id/startOne"
+    android:layout_marginTop="49dp"
+    android:layout_below="@+id/night"
+    android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Activity Two"
-        android:id="@+id/actTwo" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ActivityOne"
-        android:onClick="startActivityOne"
-        android:id="@+id/startOne"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Night"
+        android:id="@+id/night"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="55dp"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Psalm 1:2"
+        android:id="@+id/text2"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="But his delight is in the law of the LORD, And in His law he meditates day and night."
+        android:layout_below="@+id/text2"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="45dp"
+        android:textColor="#FFFFFF" />
 </RelativeLayout>
