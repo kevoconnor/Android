@@ -173,4 +173,13 @@
         android:layout_alignTop="@+id/play4"
         android:layout_toEndOf="@+id/internal" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop All"
+        android:id="@+id/stopButton"
+        android:onClick="stop2Chainz"
+        android:layout_above="@+id/fork"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

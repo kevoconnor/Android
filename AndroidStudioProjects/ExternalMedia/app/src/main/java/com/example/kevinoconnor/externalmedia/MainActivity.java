@@ -20,6 +20,7 @@ public class MainActivity extends Activity implements MediaPlayer.OnPreparedList
     Button pause3 = null;
     Button play4 = null;
     Button pause4 = null;
+    Button stopAll = null;
     MediaPlayer mp1;
     MediaPlayer mp2;
     MediaPlayer mp3;
@@ -31,6 +32,7 @@ public class MainActivity extends Activity implements MediaPlayer.OnPreparedList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         play1 = (Button) findViewById(R.id.play1);
         pause1 = (Button) findViewById(R.id.pause1);
         play2 = (Button) findViewById(R.id.play2);
@@ -39,6 +41,7 @@ public class MainActivity extends Activity implements MediaPlayer.OnPreparedList
         pause3 = (Button) findViewById(R.id.pause3);
         play4 = (Button) findViewById(R.id.play4);
         pause4 = (Button) findViewById(R.id.pause4);
+        stopAll = (Button) findViewById(R.id.stopButton);
 
         mp1 = MediaPlayer.create(getApplicationContext(), R.raw.fork);
         mp1.setOnCompletionListener(this);
@@ -139,6 +142,26 @@ public class MainActivity extends Activity implements MediaPlayer.OnPreparedList
         play4.setEnabled(true);
     }
 
+    public void stop2Chainz(View v){
+        if (mp1.isPlaying())
+            mp1.stop();
+        if (mp2.isPlaying())
+            mp2.stop();
+        if (mp3.isPlaying())
+            mp3.stop();
+        if (mp4.isPlaying())
+            mp4.stop();
+
+        play1.setEnabled(true);
+        pause1.setEnabled(false);
+        play2.setEnabled(true);
+        pause2.setEnabled(false);
+        play3.setEnabled(true);
+        pause3.setEnabled(false);
+        play4.setEnabled(true);
+        pause4.setEnabled(false);
+    }
+
     @Override
     public void onPrepared(MediaPlayer mp) {
         play1.setEnabled(true);
@@ -161,6 +184,11 @@ public class MainActivity extends Activity implements MediaPlayer.OnPreparedList
         pause3.setEnabled(false);
         play4.setEnabled(true);
         pause4.setEnabled(false);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
         mp1.release();
         mp2.release();
         mp3.release();
