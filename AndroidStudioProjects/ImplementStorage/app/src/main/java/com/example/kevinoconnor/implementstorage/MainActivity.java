@@ -33,11 +33,6 @@ public class MainActivity extends ListActivity {
 
         SharedPreferences preferences = getSharedPreferences("sharedPref", MODE_PRIVATE);
         color = preferences.getString("color", "none");
-        /*if (color2.equals("none")) {
-            color = "black";
-        }else{
-            color = preferences.getString(getString(R.string.color), color2);
-        }*/
 
         Log.d("Get String", color);
 
